@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+    <title>Daily Journal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #12122e;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 50px;
+        }
+
+        h2 {
+            color: #444;
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            font-size: 1.1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+            margin-bottom: 20px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: rgb(48, 6, 120);
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #bfc7c0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            background-color: #b8d9bf;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Daily Journal</h1>
+    <div class="container">
+        <form action="{{ url_for('add_entry') }}" method="post">
+            <textarea name="entry" placeholder="Write your thoughts here..."></textarea>
+            <button type="submit">Add Entry</button>
+        </form>
+
+        <h2>Journal Entries</h2>
+        <ul>
+            {% for entry in entries %}
+                <li>{{ entry }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
